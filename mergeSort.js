@@ -2,25 +2,28 @@ function mergeSort(arr){
     if(arr.length<2){
         return arr
     }
-    const midArray = Math.floor(arr.length/2)
-    const leftArray = arr.slice(0,midArray)
-    const rightArray = arr.slice(midArray)
-    return merge(mergeSort(leftArray),mergeSort(rightArray))
+    const mid = Math.floor(arr.length/2)
+    const left = arr.slice(0,mid)
+    const right = arr.slice(mid)
+    return merge(mergeSort(left),mergeSort(right))
 }
 
-function merge(leftArray,rightArray){
-    const temp =[]
-    while(leftArray.length && rightArray.length){
-        if(leftArray[0]<=rightArray[0]){
-            temp.push(leftArray.shift())
+function merge(left,right){
+    const temp=[]
+    while(left.length && right.length)
+    {
+       
+        if(left[0]<right[0]){
+            temp.push(left.shift())
         }
         else{
-            temp.push(rightArray.shift())
+            temp.push(right.shift())
         }
-    }
-    return [...temp,...leftArray,...rightArray]
+    
+}
+    return [...temp,...left,...right]
 }
 
-const arr= [100,2,32,12,55,63,7]
+const arr=[33,4,23,12,65,7,45]
 
 console.log(mergeSort(arr));
